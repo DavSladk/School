@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -q qgpu
+#PBS -A DD-22-68
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=0:10:00
+#PBS -N PCG-NBODY-STEP2
+
+STEP="step2"
+PROJECT_DIR="/home/xsladk07/PCG_1/"
+
+ml HDF5/1.12.2-iimpi-2022a
+ml CUDA/11.7.0
+
+cd $PROJECT_DIR/$STEP
+make
+make run

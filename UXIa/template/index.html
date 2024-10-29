@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style/w3.css">
+    <link rel="stylesheet" href="style/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="scripts/loadData.js"></script> 
+    <script src="scripts/modal.js"></script> 
+    <script src="scripts/midCard.js"></script> 
+    <script src="scripts/search.js"></script> 
+</head>
+<body>
+    <div class="w3-dark-grey w3-container w3-row">
+
+        <div class="w3-quarter w3-text-dark-grey w3-xlarge" style="margin-top: 3px;">Document database</div>
+        <div class="w3-half">
+            <div class="w3-row w3-large">
+                <button onclick="onclickAll()" id="all-button" type="button" class="w3-third w3-center w3-button w3-ripple">ALL</button>
+                <button onclick="onclickPinned()" id="pinned-button" type="button" class="w3-third w3-center w3-button w3-ripple">PINNED</button>
+                <button onclick="onclickUploaded()" id="my-uploads-button" type="button" class="w3-third w3-center w3-button w3-ripple">MY UPLOADS</button>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-right" style="margin-top: 3px;">
+                <i class="fa fa-upload w3-xxlarge w3-margin-right"></i>
+                <i class="fa fa-user-circle-o w3-xxlarge w3-margin-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-row">
+        <!--------------->
+        <!-- LEFT PART -->
+        <!--------------->
+        <div class="w3-quarter w3-container">
+            <div>
+                <h3>Latest uploads:</h3>
+            </div>
+            <!-- CARDS CONTAINER -->
+            <div id="latest-uploads-cards">
+                <!-- CARD 0 -->
+                <div class="w3-card w3-border w3-hover-border-teal w3-round" index="0"  onclick="openModal(0)">
+                    <p><b class="w3-margin-left w3-large">Lorem ipsum</b></p>
+                    <p><div class="w3-bar w3-margin-left">
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-red w3-bar-item">Tag1</div>
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-green w3-bar-item">Tag2</div>
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-blue  w3-bar-item">Tag3</div>
+                        </div></p>
+                    <p class="w3-margin-left w3-medium">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+                &nbsp;
+            </div>
+        </div>
+        <!----------------->
+        <!-- MIDDLE PART -->
+        <!----------------->
+        <div class="w3-half w3-border-left w3-border-right w3-container">
+            <!-- SEARCH BAR -->
+            <div id="search-bar" class="w3-display-container">
+                <input class="w3-input w3-border w3-round-xxlarge w3-margin-top w3-margin-bottom w3-hover-border-teal" type="text" placeholder="Full text #tag1 #tag2">
+                <button class="w3-button w3-circle w3-display-right w3-ripple"><i class="fa fa-search"></i></button>
+            </div>
+            <!-- MID CARDS -->
+            <div id="mid-cards">
+                <!-- CARD 0 -->
+                <div class="w3-container w3-margin-bottom w3-card w3-row w3-display-container w3-border w3-round" index="0">
+                    <!-- PIN -->
+                    <div class="w3-display-topright">
+                        <button onclick="onclickPin(this)" class="w3-button w3-round w3-ripple"><i class="fa fa-thumb-tack"></i></buttonn>
+                    </div>
+                    <!-- LIKE DISLIKE -->
+                    <div class="w3-display-bottomright">
+                        <button onclick="onclickUp(this)" votes="69" class="w3-button w3-hover-green w3-round w3-text-green w3-ripple"><i class="fa fa-arrow-up"></i> 69</button><button onclick="onclickDown(this)" votes="42" class="w3-button w3-hover-red w3-round w3-text-red w3-ripple"><i class="fa fa-arrow-down"></i> 42</button>
+                    </div>
+                    <div class="w3-quarter">
+                        <!-- IMAGE -->
+                        <img src="data/img/aurora_borealis.png" class="w3-round w3-small w3-margin-top img-max-width">
+                        <!-- OPEN -->
+                        <button onclick="onclickOpen(this)" class="w3-button w3-margin-bottom w3-margin-top w3-bar w3-teal w3-hover-indigo w3-round w3-ripple">OPEN</button>
+                    </div>
+                    <div class="w3-rest w3-margin-top">
+                        <!-- INFO -->
+                        <div class="w3-bar w3-small w3-text-grey">
+                            <div class="w3-bar-item">Uploaded by: Lorem Ipsum</div>
+                            <div class="w3-bar-item">Upload date: 12.12.1212</div>
+                        </div>
+                        <!-- NAME -->
+                        <b class="w3-margin-left w3-xlarge">Lorem ipsum</b>
+                        <!-- TAGS -->
+                        <p>
+                            <div class="w3-bar w3-margin-left">
+                                <div class="w3-dropdown-click w3-white">
+                                    <button onclick="showTagVote(this)" class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-red w3-bar-item w3-border-red w3-border">Tag1</button>
+                                    <div onmouseout="hideTagVote(this)" class="w3-dropdown-content w3-bar-block dropdown">
+                                        <button onclick="onclickUpTag(this)" class="w3-button w3-hover-white w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                        <button class="w3-button w3-padding-small w3-tiny w3-hover-red w3-round-xxlarge w3-red w3-bar-item w3-border-red w3-border dropdown-item">Tag1</button>
+                                        <button onclick="onclickDownTag(this)" class="w3-button w3-hover-white w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                    </div>
+                                </div> 
+                                <div class="w3-dropdown-click w3-white">
+                                    <button onclick="showTagVote(this)" class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-green w3-bar-item w3-border-green w3-border">Tag2</button>
+                                    <div onmouseout="hideTagVote(this)" class="w3-dropdown-content w3-bar-block dropdown">
+                                        <button onclick="onclickUpTag(this)" class="w3-button w3-hover-white w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                        <button class="w3-button w3-padding-small w3-tiny w3-hover-green w3-round-xxlarge w3-green w3-bar-item w3-border-green w3-border dropdown-item">Tag2</button>
+                                        <button onclick="onclickDownTag(this)" class="w3-button w3-hover-white w3-hover-red w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                    </div>
+                                </div> 
+                                <div class="w3-dropdown-click w3-white">
+                                    <button onclick="showTagVote(this)" class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-blue w3-bar-item w3-border-blue w3-border">Tag3</button>
+                                    <div onmouseout="hideTagVote(this)" class="w3-dropdown-content w3-bar-block dropdown">
+                                        <button onclick="onclickUpTag(this)" class="w3-button w3-hover-white w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                        <button class="w3-button w3-padding-small w3-tiny w3-hover-blue w3-round-xxlarge w3-blue w3-bar-item w3-border-blue w3-border dropdown-item">Tag3</button>
+                                        <button onclick="onclickDownTag(this)" class="w3-button w3-hover-white w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                    </div>
+                                </div> 
+                            </div>
+                        </p>
+                        <!-- DESCRIPTION -->
+                        <p class="w3-margin-left w3-medium">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+                &nbsp;
+            </div>
+        </div>
+        <!-------------->
+        <!--RIGHT PART-->
+        <!-------------->
+        <div class="w3-quarter  w3-container">
+            <div>
+                <h3>Recently viewed:</h3>
+            </div>
+            <!-- CARDS CONTAINER -->
+            <div id="recently-viewed-cards">
+                <!-- CARD 0 -->
+                <div class="w3-card w3-border w3-hover-border-teal w3-round" index="0" onclick="openModal(0)">
+                    <p><b class="w3-margin-left w3-large">Lorem ipsum</b></p>
+                    <p><div class="w3-bar w3-margin-left">
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-red w3-bar-item">Tag1</div>
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-green w3-bar-item">Tag2</div>
+                            <div class="w3-padding-small w3-tiny w3-round-xxlarge w3-blue  w3-bar-item">Tag3</div>
+                        </div></p>
+                    <p class="w3-margin-left w3-medium">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+                &nbsp;
+            </div>
+        </div>
+
+    </div>
+    <!-- The Modal -->
+    <div id="modal" class="w3-modal">
+        <div class="w3-modal-content w3-round">
+            <div class="w3-container w3-row w3-display-container">
+                <!-- PIN & CLOSE-->
+                <div class="w3-display-topright">
+                    <button class="w3-button w3-round w3-ripple"><i class="fa fa-thumb-tack"></i></buttonn><button class="w3-button w3-round w3-ripple" onclick="hideModal()"><i class="fa fa-times"></i></buttonn>
+                </div>
+                <!-- LIKE DISLIKE -->
+                <div class="w3-display-bottomright">
+                    <button class="w3-button w3-hover-green w3-round w3-text-green w3-ripple"><i class="fa fa-arrow-up"></i> 69</button><button class="w3-button w3-hover-red w3-round w3-text-red w3-ripple"><i class="fa fa-arrow-down"></i> 42</button>
+                </div>
+                <div class="w3-quarter">
+                    <!-- IMAGE -->
+                    <img src="data/img/aurora_borealis.png" class="w3-round w3-small w3-margin-top img-max-width">
+                    <!-- OPEN -->
+                    <button class="w3-button w3-margin-bottom w3-margin-top w3-bar w3-teal w3-hover-indigo w3-round w3-ripple">OPEN</button>
+                </div>
+                <div class="w3-rest w3-margin-top">
+                    <!-- INFO -->
+                    <div class="w3-bar w3-small w3-text-grey">
+                        <div class="w3-bar-item">Uploaded by: Lorem Ipsum</div>
+                        <div class="w3-bar-item">Upload date: 12.12.1212</div>
+                    </div>
+                    <!-- NAME -->
+                    <b class="w3-margin-left w3-xlarge">Lorem ipsum</b>
+                    <!-- TAGS -->
+                    <p>
+                        <div class="w3-bar w3-margin-left">
+                            <div class="w3-dropdown-hover w3-white">
+                                <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-red w3-bar-item w3-border-red w3-border">Tag1</button>
+                                <div class="w3-dropdown-content w3-bar-block dropdown">
+                                    <button class="w3-button w3-hover-green w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                    <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-red w3-bar-item w3-border-red w3-border dropdown-item">Tag1</button>
+                                    <button class="w3-button w3-hover-red w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                </div>
+                            </div> 
+                            <div class="w3-dropdown-hover w3-white">
+                                <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-green w3-bar-item w3-border-green w3-border">Tag2</button>
+                                <div class="w3-dropdown-content w3-bar-block dropdown">
+                                    <button class="w3-button w3-hover-green w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                    <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-green w3-bar-item w3-border-green w3-border dropdown-item">Tag2</button>
+                                    <button class="w3-button w3-hover-red w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                </div>
+                            </div> 
+                            <div class="w3-dropdown-hover w3-white">
+                                <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-blue w3-bar-item w3-border-blue w3-border">Tag3</button>
+                                <div class="w3-dropdown-content w3-bar-block dropdown">
+                                    <button class="w3-button w3-hover-green w3-text-green w3-ripple w3-round-xxlarge w3-border w3-border-green dropdown-item no-padding"><i class="fa fa-arrow-up"></i></button>
+                                    <button class="w3-button w3-padding-small w3-tiny w3-round-xxlarge w3-blue w3-bar-item w3-border-blue w3-border dropdown-item">Tag3</button>
+                                    <button class="w3-button w3-hover-red w3-text-red w3-ripple w3-round-xxlarge w3-border w3-border-red dropdown-item no-padding"><i class="fa fa-arrow-down"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                    <!-- DESCRIPTION -->
+                    <p class="w3-margin-left w3-medium">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="tag-votes" class="test" style="position: absolute;">
+        <div class="w3-button">
+            CECKY
+        </div>
+    </div> -->
+</body>
+</html> 

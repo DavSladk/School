@@ -1,0 +1,11 @@
+*
+!.gitignore
+!build.sh
+!run.sh
+!data.py
+!urls.py
+!README
+!requitements.txt
+!urls.txt
+!data.tsv
+!Makefile

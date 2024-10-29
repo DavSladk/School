@@ -1,0 +1,12 @@
+*
+!.gitignore
+!README.md
+!Makefile
+!dataset/
+!dataset/*.csv
+!doc/
+!doc/documentation.tex
+!doc/documentation.pdf
+!doc/img/*
+!src/
+!src/*

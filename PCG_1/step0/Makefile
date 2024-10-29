@@ -1,0 +1,62 @@
+# Paralelní programování na GPU (PCG 2022)
+# Projekt c. 1 (cuda)
+# Login: xsladk07
+
+
+N=4096
+DT=0.01f
+STEPS=500
+THREADS_PER_BLOCK=512
+RED_THREADS=4096
+RED_THREADS_PER_BLOCK=128
+WRITE_INTESITY=20
+
+SAMPLE_INPUT=../sampledata/sampleInput.h5
+SAMPLE_OUTPUT=../sampledata/sampleOutput.h5
+OUTPUT=step0Output.h5
+
+INCLUDE=../commons
+LIBS=-lhdf5
+
+FLAGS=  
+
+.PHONY: all clean run profile
+
+all: nbody
+
+nbody: nbody.cu main.cu nbody.h
+	nvcc ${FLAGS} -I${INCLUDE} nbody.cu main.cu ../commons/h5Helper.cpp ${LIBS} -o nbody
+
+clean:
+	rm -f *.o nbody
+
+run:
+	./nbody 25600 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/25600Input.h5 data/25600Output.h5
+	./nbody 28160 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/28160Input.h5 data/28160Output.h5
+	./nbody 30720 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/30720Input.h5 data/30720Output.h5
+	./nbody 33280 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/33280Input.h5 data/33280Output.h5
+	./nbody 35840 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/35840Input.h5 data/35840Output.h5
+	./nbody 38400 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/38400Input.h5 data/38400Output.h5
+	./nbody 40960 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/40960Input.h5 data/40960Output.h5
+	./nbody 43520 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/43520Input.h5 data/43520Output.h5
+	./nbody 46080 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/46080Input.h5 data/46080Output.h5
+	./nbody 48640 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/48640Input.h5 data/48640Output.h5
+	./nbody 51200 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/51200Input.h5 data/51200Output.h5
+	./nbody 53760 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/53760Input.h5 data/53760Output.h5
+	./nbody 56320 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/56320Input.h5 data/56320Output.h5
+	./nbody 58880 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/58880Input.h5 data/58880Output.h5
+	./nbody 61440 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/61440Input.h5 data/61440Output.h5
+	./nbody 64000 ${DT} ${STEPS} ${THREADS_PER_BLOCK} ${WRITE_INTESITY} ${RED_THREADS} ${RED_THREADS_PER_BLOCK} data/64000Input.h5 data/64000Output.h5
+
+check_output:
+	./nbody 4096 0.01f 2500 ${THREADS_PER_BLOCK} 50 ${RED_THREADS} ${RED_THREADS_PER_BLOCK} $(SAMPLE_INPUT) $(OUTPUT)
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /pos_x_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /pos_y_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /pos_z_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /vel_x_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /vel_y_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /vel_z_final
+	-h5diff -v2 -p 0.00001 $(SAMPLE_OUTPUT) $(OUTPUT) /weight_final
+
+check_com:
+	./nbody 10 0.01f 10000 ${THREADS_PER_BLOCK} 0 ${RED_THREADS} ${RED_THREADS_PER_BLOCK} $(SAMPLE_INPUT) $(OUTPUT)

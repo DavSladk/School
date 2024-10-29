@@ -1,0 +1,24 @@
+<!ELEMENT slides (slide+)>
+<!ELEMENT slide (slideClass|text|button|image|audio|video)*>
+<!ELEMENT slideClass (#PCDATA)>
+
+<!ELEMENT text (textClass*,value)>
+<!ELEMENT textClass (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+
+<!ELEMENT button (buttonClass*,to,value)>
+<!ELEMENT buttonClass (#PCDATA)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+
+<!ELEMENT image (imageClass*,src)>
+<!ELEMENT imageClass (#PCDATA)>
+
+<!ELEMENT audio (audioClass*,src,loop?)>
+<!ELEMENT audioClass (#PCDATA)>
+
+<!ELEMENT video (videoClass*,src,loop?)>
+<!ELEMENT viodeClass (#PCDATA)>
+
+<!ELEMENT src (#PCDATA)>
+<!ELEMENT loop EMPTY>

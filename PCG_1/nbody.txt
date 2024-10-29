@@ -1,0 +1,110 @@
+Paralelní programování na GPU (PCG 2022)
+Projekt c. 1 (cuda)
+Login: xsladk07
+
+
+
+Krok 0: základní implementace
+=============================
+Velikost dat    	čas jedne iterace [s]
+    25600                0.017334
+    28160                0.018988
+    30720                0.020716
+    33280                0.022438
+    35840                0.024157
+    38400                0.025877
+    40960                0.027597
+    43520                0.029333
+    46080                0.031067
+    48640                0.032779
+    51200                0.034498
+    53760                0.036231
+    56320                0.063603
+    58880                0.066528
+    61440                0.069636
+    64000                0.072732
+
+Pro počet částic 25600 až 53760 dochází k nepřekvapujícímu
+inkrementálnímu nárustu času pro výpočet jedné iterace z prostého
+důvodu zvětšení množství interakci pro každou částici.
+
+Pro 56320 částit však náhle čas výpočtu náhle výrazně skočí téměř
+o dvojnásob. Je to způsobeno tím, že na Karolině jsou karty
+nvidia A100, které mají 108 SM. Při 56320 vláknech začne
+program vytvářet více jak 108 bloků, tedy rezidentních bloků
+je více než je možné naráz obsloužit a některé bloky musejí čekat
+na uvolnění SM.
+
+
+Krok 1: optimalizace kódu
+=====================
+DVelikost dat    	čas jedne iterace [s]
+    25600                0.014040
+    28160                0.015326
+    30720                0.016724
+    33280                0.018110
+    35840                0.019499
+    38400                0.020897
+    40960                0.022288
+    43520                0.023682
+    46080                0.025083
+    48640                0.026470
+    51200                0.027860
+    53760                0.029255
+    56320                0.053532
+    58880                0.055970
+    61440                0.058579
+    64000                0.061190
+
+Ke zrychlení došlo. Důvod je menší počet volání kernelů
+a to, že každé vlákno počítá všechno potřebné zaráz oproti tomu
+aby se přes částice procházelo dvakrát.
+
+Krok 2: sdílená paměť
+=====================
+DVelikost dat    	čas jedne iterace [s]
+    25600                0.011253
+    28160                0.012277
+    30720                0.013392
+    33280                0.014516
+    35840                0.015632
+    38400                0.016738
+    40960                0.017852
+    43520                0.018967
+    46080                0.020081
+    48640                0.021197
+    51200                0.022311
+    53760                0.023425
+    56320                0.046335
+    58880                0.048503
+    61440                0.050626
+    64000                0.052701
+
+Ke zrychlení došlo. Důvodem je, že každé vlákno pořád
+nepřistupuje do globální paměti. Místo toho každé vlákno
+načte kus globální paměti do sdílené a pak každé vlákno
+nahradí přístup do globáln paměti přístupem do sdílené.
+
+Krok 5: analýza výkonu
+======================
+N            čas CPU [s]    čas GPU [s]    propustnost paměti [MB/s]    výkon [MFLOPS]    zrychlení [-]
+2^n * 1024      ...            ...            ...                          ...               ...
+    ...         ...            ...            ...                          ...               ...
+    ...         ...            ...            ...                          ...               ...
+
+Pro n 1 az 10
+
+Od jakého počtu částic se vyplatí počítat na grafické kartě?
+
+Krok 5: bonus - srovnání grafických karet
+======================
+N            čas GPU 1 [s]   propustnost 1 [MB/s]    výkon 1 [MFLOPS]   čas GPU 2 [s]  propustnost 2 [MB/s]    výkon 2 [MFLOPS]
+2^n * 1024      ...            ...            ...          ...             ...               ...                    ...
+    ...         ...            ...            ...          ...             ...               ...                    ...
+    ...         ...            ...            ...          ...             ...               ...                    ...
+
+Pro n 1 az 10
+
+Porovnejte grafické karty z hlediska výkonu a propustnosti paměti.
+
+===================================

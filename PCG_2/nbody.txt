@@ -1,0 +1,134 @@
+/**
+ * @file      main.cpp
+ *
+ * @author    David Sladký \n
+ *            xsladk07@stud.fit.vutbr.cz
+ *
+ * @brief     PCG Assignment 2
+ *            N-Body simulation in ACC
+ *
+ * @version   2022
+ *
+ * @date      11 November  2020, 11:22 (created) \n
+ * @date      16 November  2022, 15:09 (revised) \n
+ *
+ */
+
+Nevím, co dělám špatně, ale zdá se, že přiložené testy jsou nefukční. V step1 jsem
+zapomněl zavolat 2 ze tří kernelů a kopírování dat z GPU na host a testy procházely.
+Po jejich přidání se výstup testů nezměnil, ale také se nezměnil výstup
+'make check_outputs'. Proto neručím za to, co to počítám. Jenom za to, že 
+to počítá.
+
+Krok 1: základní implementace
+===============================================================================
+Velikost dat    	čas jedne iterace [s]
+    25600                0.000040
+    28160                0.000038
+    30720                0.000038
+    33280                0.000036
+    35840                0.000036
+    38400                0.000036
+    40960                0.000036
+    43520                0.000036
+    46080                0.000036
+    48640                0.000036
+    51200                0.000036
+    53760                0.000036
+    56320                0.000036
+    58880                0.000036
+    61440                0.000036
+    64000                0.000036
+
+Vyskytla se nějaká anomálie v datech
+Pokud ano, vysvětlete:
+
+Doba výpočtu se zdá být konstantní. Předpokládal bych, že se se doba výpočtu
+bude zvětšovat a podobně jako u prvního projektu dojde k většímu skoku, kdy
+počet rezidentních bloků překročí počet SM na GPU.
+
+Výsvětlil bych to tím, že mám někde chybu. Bohužel nevím kde.
+
+Krok 2: optimalizace kódu
+===============================================================================
+Velikost dat    	čas jedne iterace [s]
+    25600                0.000012
+    28160                0.000012
+    30720                0.000012
+    33280                0.000012
+    35840                0.000012
+    38400                0.000012
+    40960                0.000012
+    43520                0.000012
+    46080                0.000012
+    48640                0.000012
+    51200                0.000012
+    53760                0.000012
+    56320                0.000012
+    58880                0.000012
+    61440                0.000012
+    64000                0.000012
+
+Došlo ke zrychlení?
+
+Popište dva hlavní důvody:
+* dochází k spouštění jednoho kernelu místo tří
+* méně přístupů do globální paměti
+
+Doba výpočtu je zase konstatní, i když by neměla.
+
+Krok 3: Težiště
+===============================================================================
+Kolik kernelů je nutné použít k výpočtu?
+K výpočtu těžiště jsem používám jeden kernel.
+
+Kolik další paměti jste museli naalokovat?
+Žádnou další paměť jsem nealokoval.
+
+Jaké je zrychelní vůči sekveční verzi?
+(provedu to smyčkou #pragma acc parallel loop seq)
+Zdůvodněte:
+
+Velikost dat         čas jedne iterace        čas jedne iterace 
+                           seq[s]                  par[s]
+    25600                0.000016                 0.000012
+    28160                0.000014                 0.000012
+    30720                0.000016                 0.000012
+    33280                0.000014                 0.000012
+    35840                0.000016                 0.000012
+    38400                0.000014                 0.000012
+    40960                0.000014                 0.000012
+    43520                0.000016                 0.000012
+    46080                0.000016                 0.000012
+    48640                0.000016                 0.000012
+    51200                0.000016                 0.000012
+    53760                0.000016                 0.000012
+    56320                0.000016                 0.000012
+    58880                0.000016                 0.000012
+    61440                0.000016                 0.000012
+    64000                0.000016                 0.000012
+
+Paralelní redukce má logaritmickou složitost, ale sekvenční má lineární složitost.
+
+
+Krok 4: analýza výkonu
+======================
+N            čas jedne iterace        čas jedne iterace 
+                  GPU[s]                   CPU[s]
+1024             0.000030                 0.000458
+2048             0.000036                 0.000668
+3072             0.000044                 0.000690
+4096             0.000050                 0.000666
+5120             0.000060                 0.000734
+6144             0.000064                 0.000846
+7168             0.000070                 0.000814
+8192             0.000078                 0.000654
+9216             0.000086                 0.001160
+10240            0.000094                 0.001110
+
+Od jakého počtu částic se vyplatí počítat na grafické kartě?
+
+Zdá se, že už od počtu prvků 1024 se již vyplatí počítat na GPU. Osobně bych
+čekal, že zlepšení výkonu bude až u většího počtu částic.
+
+===============================================================================

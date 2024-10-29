@@ -1,0 +1,13 @@
+.img-max-width {
+    max-width: 100%;
+}
+
+.dropdown {
+    top: 76px;
+    min-width: 0px;
+    background: rgba(0,0,0,0);
+}
+
+.no-padding {
+    padding: 0;
+}

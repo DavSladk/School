@@ -1,0 +1,309 @@
+[
+{
+    "name": "Cat playing piano",
+    "description": "Cute cat playing classical music",
+    "tags": ["cats", "music"],
+    "uploadedBy": "John Doe",
+    "uploadDate": "2022-03-15",
+    "up": 250,
+    "down": 30,
+    "text": "Feline Beethoven",
+    "preview": "cat-piano.png",
+    "uploaded": false,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Sunset over mountains",
+    "description": "Beautiful landscape of a sunset",
+    "tags": ["nature", "sunset", "mountains"],
+    "uploadedBy": "Jane Smith",
+    "uploadDate": "2022-01-10",
+    "up": 120,
+    "down": 5,
+    "text": "Golden Hour",
+    "preview": "sunset-mountains.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Chocolate cake recipe",
+    "description": "Step-by-step instructions for making a decadent chocolate cake",
+    "tags": ["food", "dessert", "recipes"],
+    "uploadedBy": "Baker123",
+    "uploadDate": "2022-02-28",
+    "up": 80,
+    "down": 10,
+    "text": "Indulgent and delicious",
+    "preview": "chocolate-cake.png",
+    "uploaded": false,
+    "pinned": true
+  }
+  ,
+  {
+    "name": "Bungee jumping over a canyon",
+    "description": "Adrenaline-fueled activity with breathtaking views",
+    "tags": ["adventure", "travel", "extreme_sports"],
+    "uploadedBy": "Traveler007",
+    "uploadDate": "2022-04-01",
+    "up": 350,
+    "down": 50,
+    "text": "Jump into the void",
+    "preview": "bungee-jumping.png",
+    "uploaded": false,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Aurora Borealis",
+    "description": "Stunning display of colorful lights in the sky",
+    "tags": ["nature", "aurora", "scenery"],
+    "uploadedBy": "Elsa",
+    "uploadDate": "2023-04-09",
+    "up": 340,
+    "down": 25,
+    "text": "Magical moment captured",
+    "preview": "aurora_borealis.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Homemade Pizza Recipe",
+    "description": "Step-by-step guide to making delicious pizza at home",
+    "tags": ["recipes", "food", "cooking"],
+    "uploadedBy": "Tony",
+    "uploadDate": "2023-04-09",
+    "up": 120,
+    "down": 10,
+    "text": "The perfect recipe for pizza lovers",
+    "preview": "homemade_pizza_recipe.png",
+    "uploaded": false,
+    "pinned": true
+  }
+  ,
+  {
+    "name": "Paragliding in the Swiss Alps",
+    "description": "Experience the thrill of flying over the mountains",
+    "tags": ["travel", "extreme_sports", "mountains"],
+    "uploadedBy": "Anna",
+    "uploadDate": "2023-04-09",
+    "up": 90,
+    "down": 5,
+    "text": "Adrenaline rush at 2000m above sea level",
+    "preview": "paragliding_swiss_alps.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Chocolate Lava Cake",
+    "description": "Indulgent dessert recipe for chocolate lovers",
+    "tags": ["recipes", "food", "dessert"],
+    "uploadedBy": "Maria",
+    "uploadDate": "2023-04-09",
+    "up": 240,
+    "down": 20,
+    "text": "Decadent and rich dessert",
+    "preview": "chocolate_lava_cake.png",
+    "uploaded": false,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Sunset at the Beach",
+    "description": "A peaceful moment watching the sunset over the ocean",
+    "tags": ["nature", "sunset", "beach"],
+    "uploadedBy": "Adam",
+    "uploadDate": "2023-04-09",
+    "up": 530,
+    "down": 35,
+    "text": "Perfect end to a relaxing day",
+    "preview": "sunset_beach.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Aurora Borealis in Lapland",
+    "description": "Witness the Northern Lights in a winter wonderland",
+    "tags": ["travel", "nature", "aurora"],
+    "uploadedBy": "Sarah",
+    "uploadDate": "2023-04-09",
+    "up": 170,
+    "down": 7,
+    "text": "A magical experience under the stars",
+    "preview": "aurora_lapland.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Hiking in the Grand Canyon",
+    "description": "An unforgettable adventure in one of the world's natural wonders",
+    "tags": ["travel", "nature", "mountains"],
+    "uploadedBy": "John",
+    "uploadDate": "2023-04-09",
+    "up": 120,
+    "down": 3,
+    "text": "Stunning views from the top",
+    "preview": "hiking_grand_canyon.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Skydiving in Dubai",
+    "description": "An adrenaline-pumping experience from the top of the world",
+    "tags": ["travel", "extreme_sports", "adventure"],
+    "uploadedBy": "Alex",
+    "uploadDate": "2023-04-09",
+    "up": 430,
+    "down": 30,
+    "text": "The ultimate thrill ride",
+    "preview": "skydiving_dubai.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Blueberry Pie Recipe",
+    "description": "Learn how to make a delicious homemade blueberry pie",
+    "tags": ["cooking", "recipes", "dessert"],
+    "uploadedBy": "Sophie",
+    "uploadDate": "2023-04-09",
+    "up": 85,
+    "down": 1,
+    "text": "Perfect for any occasion",
+    "preview": "blueberry_pie.png",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Santorini Sunset",
+    "description": "Watch the sun set over the Aegean Sea from a stunning Greek island",
+    "tags": ["travel", "nature", "sunset"],
+    "uploadedBy": "Maria",
+    "uploadDate": "2023-04-09",
+    "up": 220,
+    "down": 8,
+    "text": "A breathtaking moment of tranquility",
+    "preview": "santorini_sunset.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Exploring the Northern Lights",
+    "description": "Experience the magic of the aurora borealis in the Arctic",
+    "tags": ["travel", "nature", "aurora"],
+    "uploadedBy": "Lena",
+    "uploadDate": "2023-04-09",
+    "up": 350,
+    "down": 20,
+    "text": "A once-in-a-lifetime adventure",
+    "preview": "northern_lights.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Winter Scenery in the Swiss Alps",
+    "description": "A snowy wonderland with stunning mountain views",
+    "tags": ["travel", "nature", "scenery"],
+    "uploadedBy": "Markus",
+    "uploadDate": "2023-04-09",
+    "up": 420,
+    "down": 15,
+    "text": "A paradise for winter sports enthusiasts",
+    "preview": "swiss_alps_winter.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Thrilling Base Jumping in Norway",
+    "description": "Experience the adrenaline rush of base jumping off a Norwegian cliff",
+    "tags": ["travel", "extreme_sports", "Norway"],
+    "uploadedBy": "Tom",
+    "uploadDate": "2023-04-09",
+    "up": 150,
+    "down": 7,
+    "text": "A heart-pumping adventure",
+    "preview": "base_jumping_norway.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Sunset Over the Pacific Ocean",
+    "description": "Breathtaking sunset with vibrant colors",
+    "tags": ["nature", "scenery", "sunset"],
+    "uploadedBy": "Samantha",
+    "uploadDate": "2023-04-09",
+    "up": 250,
+    "down": 10,
+    "text": "A moment of peace and tranquility",
+    "preview": "pacific_sunset.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Exploring the Ancient Ruins of Machu Picchu",
+    "description": "A journey to the lost city of the Incas",
+    "tags": ["travel", "history", "Peru"],
+    "uploadedBy": "Maria",
+    "uploadDate": "2023-04-09",
+    "up": 380,
+    "down": 8,
+    "text": "Discovering the secrets of an ancient civilization",
+    "preview": "machu_picchu_ruins.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Chocolate Lava Cake Recipe",
+    "description": "Decadent dessert with a molten chocolate center",
+    "tags": ["cooking", "dessert", "recipes"],
+    "uploadedBy": "Julia",
+    "uploadDate": "2023-04-09",
+    "up": 420,
+    "down": 12,
+    "text": "Indulge in this rich and delicious treat",
+    "preview": "chocolate_lava_cake.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "The Great Barrier Reef",
+    "description": "An underwater wonderland",
+    "tags": ["nature", "Australia", "coral_reef"],
+    "uploadedBy": "Maria",
+    "uploadDate": "2023-04-09",
+    "up": 880,
+    "down": 20,
+    "text": "A world-class snorkeling and diving destination",
+    "preview": "great_barrier_reef.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+  ,
+  {
+    "name": "Cherry Blossoms in Tokyo",
+    "description": "The fleeting beauty of spring",
+    "tags": ["Japan", "nature", "sakura"],
+    "uploadedBy": "Kenji",
+    "uploadDate": "2023-04-09",
+    "up": 650,
+    "down": 30,
+    "text": "The Japanese tradition of hanami",
+    "preview": "cherry_blossoms.jpeg",
+    "uploaded": true,
+    "pinned": false
+  }
+]

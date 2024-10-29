@@ -1,0 +1,129 @@
+body
+{
+    background-color: gray;
+    margin: 0;
+}
+
+body > div
+{
+    position: relative;
+    background-color: white;
+    height: 100vh;
+    width: 161.8033vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heading
+{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.imageCenter
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 55vh;
+}
+
+.centerBottom
+{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.leftBottom
+{
+    position: absolute;
+    top: 90%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.rightBottom
+{
+    position: absolute;
+    top: 90%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.left
+{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.right
+{
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.imageLeft
+{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 33vw;
+}
+
+.right0
+{
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.right1
+{
+    position: absolute;
+    top: 45%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.right2
+{
+    position: absolute;
+    top: 65%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}
+
+.right3
+{
+    position: absolute;
+    top: 85%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 5vh;
+}

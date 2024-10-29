@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10.2)
+project(isabot)
+include_directories(headers)
+file(GLOB SOURCES "src/*.cpp") 
+add_executable(isabot ${SOURCES})
+target_link_libraries(isabot ssl)
+target_link_libraries(isabot crypto)

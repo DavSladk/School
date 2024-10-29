@@ -1,0 +1,8 @@
+*
+!.gitignore
+!Makefile
+!README.md
+!requirements.txt
+!kry.py
+!client.py
+!server.py

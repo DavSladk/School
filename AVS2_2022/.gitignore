@@ -1,0 +1,14 @@
+*
+!.gitignore
+!common
+!common/*
+!data/
+!data/*
+!parallel_builder/
+!parallel_builder/*
+!CMakeLists.txt
+!evaluate.pbs
+!main.cpp
+!PMC-xsladk07.txt
+!vtune.pbs
+!zadani.pdf

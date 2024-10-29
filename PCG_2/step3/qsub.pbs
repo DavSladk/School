@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -q qgpu
+#PBS -A DD-22-68
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=1:00:00
+#PBS -l nsys=True
+#PBS -N PCG-NBODY-OPENACC
+
+PROJECT_DIR="/home/xsladk07/PCG2/"
+STEP_DIR="/home/xsladk07/PCG2/step3/"
+TEST_DIR="/home/xsladk07/PCG2/tests/"
+
+ml NVHPC/22.2 HDF5/1.12.1-NVHPC-22.2
+
+cd $STEP_DIR
+make
+make run
+make check_output
+
+cd /home/xsladk07/
+source py-test-env/bin/activate
+cd $TEST_DIR
+bash tests.sh $STEP_DIR
+deactivate

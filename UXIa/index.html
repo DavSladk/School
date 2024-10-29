@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style/w3.css">
+    <link rel="stylesheet" href="style/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="scripts/tag.js"></script>
+    <script src="scripts/midCard.js"></script>
+    <script src="scripts/rightCard.js"></script> 
+    <script src="scripts/leftCard.js"></script>
+    <script src="scripts/modal.js"></script> 
+    <script src="scripts/search.js" defer></script> 
+    <script src="scripts/loadData.js"></script> 
+</head>
+<body>
+    <div class="w3-dark-grey w3-container w3-row">
+
+        <div class="w3-quarter w3-text-dark-grey w3-xlarge" style="margin-top: 3px;">Document database</div>
+        <div class="w3-half">
+            <div class="w3-row w3-large">
+                <button onclick="onclickAll()" id="all-button" type="button" class="w3-third w3-center w3-button w3-ripple">ALL</button>
+                <button onclick="onclickPinned()" id="pinned-button" type="button" class="w3-third w3-center w3-button w3-ripple">PINNED</button>
+                <button onclick="onclickMyUploaded()" id="my-uploads-button" type="button" class="w3-third w3-center w3-button w3-ripple">MY UPLOADS</button>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-right" style="margin-top: 3px;">
+                <i class="fa fa-upload w3-xxlarge w3-margin-right"></i>
+                <i class="fa fa-user-circle-o w3-xxlarge w3-margin-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-row">
+        <!--------------->
+        <!-- LEFT PART -->
+        <!--------------->
+        <div class="w3-quarter w3-container">
+            <div>
+                <h3>Latest uploads:</h3>
+            </div>
+            <!-- CARDS CONTAINER -->
+            <div id="latest-uploads-cards">
+                &nbsp;
+            </div>
+        </div>
+        <!----------------->
+        <!-- MIDDLE PART -->
+        <!----------------->
+        <div class="w3-half w3-border-left w3-border-right w3-container">
+            <!-- SEARCH BAR -->
+            <div id="search-bar" class="w3-display-container">
+                <input onkeypress="keypressSearch(event)" class="w3-input w3-border w3-round-xxlarge w3-margin-top w3-margin-bottom w3-hover-border-teal" type="text" placeholder="Full text #tag1 #tag2">
+                <button onclick="search()" class="w3-button w3-circle w3-display-right w3-ripple"><i class="fa fa-search"></i></button>
+            </div>
+            <!-- MID CARDS -->
+            <div id="mid-cards">
+                
+            </div>
+        </div>
+        <!-------------->
+        <!--RIGHT PART-->
+        <!-------------->
+        <div class="w3-quarter  w3-container">
+            <div>
+                <h3>Recently viewed:</h3>
+            </div>
+            <!-- CARDS CONTAINER -->
+            <div id="recently-viewed-cards">
+            </div>
+        </div>
+
+    </div>
+    <!-- The Modal -->
+    <div id="modal" class="w3-modal">
+        <div class="w3-modal-content w3-round">
+            <div class="w3-container w3-row w3-display-container"></div>
+        </div>
+    </div>
+    <!-- <div id="tag-votes" class="test" style="position: absolute;">
+        <div class="w3-button">
+            CECKY
+        </div>
+    </div> -->
+</body>
+</html> 

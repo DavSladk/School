@@ -1,0 +1,185 @@
+[
+{
+    "id": "cats",
+    "up": 1500,
+    "down": 200,
+    "description": "Domesticated feline companions",
+    "color": "amber"
+}
+,
+  {
+    "id": "nature",
+    "up": 5000,
+    "down": 1000,
+    "description": "The natural world and its phenomena",
+    "color": "aqua"
+  }
+,
+  {
+    "id": "food",
+    "up": 8000,
+    "down": 500,
+    "description": "Edible substances that provide nourishment",
+    "color": "blue"
+  }
+,
+  {
+    "id": "adventure",
+    "up": 2000,
+    "down": 400,
+    "description": "Exciting or unusual experience",
+    "color": "light-blue"
+  }
+,
+{
+    "id": "music",
+    "up": 3000,
+    "down": 200,
+    "description": "Art form that combines sound and rhythm",
+    "color": "brown"
+  }
+  ,
+  {
+    "id": "sunset",
+    "up": 1000,
+    "down": 50,
+    "description": "The daily disappearance of the sun below the horizon",
+    "color": "cyan"
+  }
+  ,
+  {
+    "id": "mountains",
+    "up": 800,
+    "down": 100,
+    "description": "Large landforms that rise above the surrounding land",
+    "color": "blue-grey"
+  }
+  ,
+  {
+    "id": "dessert",
+    "up": 5000,
+    "down": 300,
+    "description": "A course that concludes a meal, often sweet in flavor",
+    "color": "green"
+  }
+  ,
+  {
+    "id": "recipes",
+    "up": 6000,
+    "down": 400,
+    "description": "Instructions for preparing a dish or drink",
+    "color": "light-green"
+  }
+  ,
+  {
+    "id": "travel",
+    "up": 4000,
+    "down": 500,
+    "description": "Journeys to places that are far away from one's usual environment",
+    "color": "indigo"
+  }
+  ,
+  {
+    "id": "extreme sports",
+    "up": 1000,
+    "down": 150,
+    "description": "Activities that involve a high degree of risk and excitement",
+    "color": "khaki"
+  }
+  ,
+  {
+    "id": "aurora",
+    "up": 500,
+    "down": 30,
+    "description": "A natural light display in the Earth's sky",
+    "color": "lime"
+  }
+  ,
+  {
+    "id": "scenery",
+    "up": 2500,
+    "down": 200,
+    "description": "The natural features of a landscape",
+    "color": "orange"
+  }
+  ,
+  {
+    "id": "cooking",
+    "up": 8000,
+    "down": 500,
+    "description": "The art and practice of preparing food for consumption",
+    "color": "deep-orange"
+  }
+  ,
+  {
+    "id": "beach",
+    "up": 7000,
+    "down": 800,
+    "description": "A sandy or pebbled shore by the sea or a lake",
+    "color": "pink"
+  }
+  ,
+  {
+    "id": "Norway",
+    "up": 100,
+    "down": 5,
+    "description": "A land of fjords, glaciers, and Northern Lights",
+    "color": "purple"
+  }
+  ,
+  {
+    "id": "history",
+    "up": 150,
+    "down": 10,
+    "description": "The study of past events, particularly in human affairs",
+    "color": "deep-purple"
+  }
+  ,
+  {
+    "id": "Peru",
+    "up": 80,
+    "down": 3,
+    "description": "A country in South America known for its rich history and culture",
+    "color": "red"
+  }
+  ,
+  {
+    "id": "Switzerland",
+    "up": 90,
+    "down": 2,
+    "description": "A country known for its picturesque landscapes and Alpine skiing",
+    "color": "sand"
+  }
+  ,
+  {
+    "id": "Australia",
+    "up": 300,
+    "down": 10,
+    "description": "A vast and diverse country with unique wildlife and stunning landscapes",
+    "color": "teal"
+  }
+  ,
+  {
+    "id": "coral reef",
+    "up": 150,
+    "down": 5,
+    "description": "A diverse and fragile ecosystem that supports a variety of marine life",
+    "color": "yellow"
+  }
+  ,
+  {
+    "id": "Japan",
+    "up": 500,
+    "down": 20,
+    "description": "A country with a unique culture and fascinating history",
+    "color": "amber"
+  }
+  ,
+  {
+    "id": "sakura",
+    "up": 200,
+    "down": 5,
+    "description": "The national flower of Japan and a symbol of the impermanence of life",
+    "color": "green"
+  }
+]

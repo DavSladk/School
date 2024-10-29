@@ -1,0 +1,154 @@
+Architektury Výpočetních Systémů (AVS 2022)
+Projekt č. 2 (PMC)
+Login: xsladk07
+
+Úloha 1: Paralelizace původního řešení
+===============================================================================
+data: bun_zipper_res4.pts
+default options
+
+  shedule  | marchCubes (ms) | evaluateFieldAt (ms)
+---------------------------------------------------
+static     |       363       |      22156
+guided     |       537       |      121637
+dynamic 1  |       427       |      139359
+dynamic 8  |       390       |      128634
+dynamic 16 |       421       |      33586
+dynamic 32 |       381       |      29851
+dynamic 64 |       405       |      29338
+
+1) Kterou ze smyček (viz zadání) je vhodnější paralelizovat a co způsobuje 
+   neefektivitu paralelizaci té druhé?
+
+   Je lepší paralelizovat smyčku v marchCubes. Tato smyčka je lepší, protože
+   se do ní přistupuje pouze jednou a obsahuje velké množství práce.
+
+   Naproti tomu smyčka v evaluateFieldAt je započínána mnohokrát, co vede na
+   větší režiji zapínání a vypínání vláken. Tato smyčka také obsahuje méně práce.
+
+2) Jaké plánování (rozdělení práce mezi vlákna) jste zvolili a proč? 
+   Jaký vliv má velikost "chunk" při dynamickém plánování (8, 16, 32, 64)?
+
+   Zvolil jsem statické, protože po pár pokusech dávalo nejlepší čas výpočtu.
+   Tohle je způsobeno tím, že každá iterace v paralelizované smyčce vykonává
+   stejné množství práce, takže je vhodné je staticky rozdělit a tím snížit
+   režiji přidělováním práce.
+
+   Obecně velikost chunku znamená, kolik iterací smyčky se vloží do jednoho chunku
+   (defaultně 1) pro zpracování. Změnou velikosti se tedy dá ovládat množství
+   prováděné práce vláknem v kuse a tím ovlivnit režiji s přiřazováním práce.
+   V tomhle případě se však zdá, že pro marchCubes změna velikosti neměla vliv.
+   V evaluateField měla, ale ostaní řežije způsobuje, že se doba výpočtu ani
+   zdaleka nepřiblíží k sekvenční.
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+
+   #pragma omp critical
+   mTriangles.push_back(triangle);
+
+
+Úloha 2: Paralelní průchod stromem
+===============================================================================
+
+1) Stručně popište použití OpenMP tasků ve vašem řešení.
+
+   Každý uzel je zpracováván jedním taskem. Každý task má prostor indexů, který
+   ošetřuje.
+   - Task nejdřív zkontroluje, zda již není na hranici cut off. Pokud ano, tak
+     zpracuje svůj prostor indexů sekvenčně a ukončí se.
+   - Jestli má task už na starosti jenom jeden index, tak ho vyhodnotí a ukončí se.
+   - Pokud byla podmínka ze zadání splněna, tak task vytvoří 8 dalších tásků, kterým
+     rovnoměrně rozloží svůj prostor indexů. Sesbírá výsledky těchto tasků a vrátí je.
+     Jinak se ukončí a vrátí 0.
+   
+   Prvotní task na nejvyšší úrovni spravující celý prostor je obsloužen master vlaknem.
+
+
+2) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový 
+   task pro každou krychli na nejnižší úrovni?
+
+data: bun_zipper_res1.pts
+default options
+
+cut off level | barbora (ms) | Ryzen 5600X (ms)
+-----------------------------------------------
+      -1      |    58280     |     43614
+       1      |     1446     |     6754
+       2      |     1975     |     8679
+       3      |     1483     |     7263
+       4      |     1007     |     4926
+       5      |     1089     |     4410
+       6      |     1082     |     4417
+       7      |     1040     |     4417
+    INT_MAX   |     1053     |     5010
+
+// -1 - cut off proběhne okamžitě a nedojde k vytváření tasků
+// INT_MAX - cut off nikdy nenaste a tasky se budou vytvářet až po nejmenší prostory indexů
+
+Nové tasky je vhodné vytvářet pouze po úroveň 4. Další paralelizace nepodává
+lepší výsledky a je lepší provádět sekvenční zpracování.
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+
+   #pragma omp critical
+   mTriangles.push_back(triangle);
+
+Úloha 3: Grafy škálování všech řešení
+===============================================================================
+
+1) Stručně zhodnoťte efektivitu vytvořených řešení (na základě grafů škálování).
+
+   Protože graf silného škálování obecně klesá a graf slabého škálování 
+   obecně nestoupá. Tak bych zhodnotil, že moje řešení podává efektivnější
+   výpočet než sekvenční varianta.
+
+   Skok výpočtu mezi 16 a 32 vlákny je způsobono tím, že referenční počítač
+   je složen ze dvou soketů.
+
+2) V jakém případě (v závislosti na počtu bodů ve vstupním souboru a velikosti 
+   mřížky) bude vaše řešení 1. úlohy neefektivní? (pokud takový případ existuje)
+
+   V první úloze není zřejmé zhoršení efektivity jak v závisloti na vstupu, tak
+   velikosti mřížky. V druhé úloze se však už dají najít situace, kdy k zhoršení
+   efektivity došlo.
+
+3) Je (nebo není) stromový algoritmus efektivnější z pohledu slabého škálování 
+   vzhledem ke vstupu?
+
+   Záleží podle situace. Dají se najít úseky, které naznačují zvýšení efektivity,
+   tak i úseky, ve kterých k zlepšení nedošlo nebo dokonce došlo i ke zhoršení.
+   Protože úseků, ve kterých ke zhoršení nedošlo, je více než úseků, ve kterých ke
+   zhoršení došlo, tak bych stomový algoritmus z pohledu velikosti vstupních dat
+   prohlásil obecně za efektivnější.
+
+4) Jaký je rozdíl mezi silným a slabým škálováním?
+
+   - Silné škálování uvažuje konstantní práci, jejíž doba výpočtu se mění v závislosti
+   na počtu jader.
+
+   - Slabé škálování uvažuje konstantní čas, v kterém se vypočítává různé množství
+   práce v závisloti na počtu jader.
+
+Úloha 4: Analýza využití jader pomocí VTune
+================================================================================
+
+1) Jaké bylo průměrné využití jader pro všechny tři implementace s omezením na 
+   18 vláken? Na kolik procent byly využity?
+   
+   ref:   2.8%
+   loop: 48.3%
+   tree: 46.9%
+
+2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
+   všech jader? Na kolik procent se podařilo využít obě CPU?
+   
+   ref:   2.8%
+   loop: 89.9%
+   tree: 81.9%
+
+3) Jaké jsou závěry z těchto měření?
+
+   Při zvyšování počtu vláken se zvyšuje využití CPU. Stromový algoritmus využívá
+   CPU méně efektivně. Nejspíše způsobené režijí vytváření tasků, zatímco loop
+   s využitím static schedule má řežiji malou. Referenční řešení je jednovláknové,
+   proto se jeho efektivita nemění.

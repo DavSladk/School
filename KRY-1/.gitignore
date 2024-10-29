@@ -1,0 +1,13 @@
+*
+!.gitignore
+!README.md
+!Makefile
+!CMakeLists.txt
+!ciphertext.txt
+!main.cpp
+!kry.cpp
+!kry.h
+!CZ.freq
+!EN.freq
+!open.txt
+!cipher.txt

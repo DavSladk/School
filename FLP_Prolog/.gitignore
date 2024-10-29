@@ -1,0 +1,9 @@
+*
+!makefile
+!README.md
+!TIMES.md
+!src.pl
+!.gitignore
+!tests/
+!tests/*.in
+!tests/*.nsfm
